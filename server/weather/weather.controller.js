@@ -12,7 +12,7 @@ function fetchWeather(req, res) {
   rp(geoCodeOptions)
     .then(result => {
       if (result.status === 'ZERO_RESULTS') {
-        throw new Error('Invalid Address');
+        throw new Error('Address is invalid');
       } else {
         const { lat } = result.results[0].geometry.location;
         const { lng } = result.results[0].geometry.location;
