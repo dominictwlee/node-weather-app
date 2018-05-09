@@ -56,6 +56,6 @@ module.exports = merge(common, {
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css'
     }),
-    new CleanWebpackPlugin(['client/dist'])
+    new CleanWebpackPlugin(['dist'])
   ]
 });
