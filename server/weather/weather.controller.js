@@ -3,7 +3,7 @@ const rp = require('request-promise-native');
 function fetchWeather(req, res) {
   const { address } = req.query;
   const geoCodeOptions = {
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBGi7OVobHDgApodlELBIcKwPqk95m8rcU`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GOOGLE_API_KEY}`,
     json: true
   };
   let formattedAddress;
@@ -23,7 +23,7 @@ function fetchWeather(req, res) {
         };
 
         const weatherOptions = {
-          url: `https://api.darksky.net/forecast/96e799841992b68258e6a4934ef136d2/${lat},${lng}?units=uk`,
+          url: `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${lat},${lng}?units=uk`,
           json: true
         };
         return rp(weatherOptions);
