@@ -1,7 +1,1 @@
-node_modules/
-.eslintrc.json
-dist
-.eslintcache
-*.map
-*.bundle.js
-.netlify
+node_modules

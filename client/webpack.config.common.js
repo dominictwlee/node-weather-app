@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
   entry: './client/src/index.jsx',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'client/dist'),
     filename: 'index_bundle.js'
   },
   resolve: {
@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './client/src/index.html',
       filename: './index.html'
     })
   ]

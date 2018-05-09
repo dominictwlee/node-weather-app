@@ -6,6 +6,6 @@ const app = express();
 
 app.use('/api/weather', weatherRouter);
 
-app.listen(3001, () => console.log(`Server started on 3001`));
+app.listen(3000, () => console.log(`Server started on 3000`));
 
 module.exports = app;
