@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from 'react';
 
-import styles from './searchBar.css';
+import styles from './search.css';
 import MainWeather from '../MainWeather/MainWeather';
+import DailyWeather from '../DailyWeather/DailyWeather';
 
-export default class SearchBar extends Component {
+export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: undefined,
-      location: undefined,
-      temperature: undefined,
-      condition: undefined
+      input: '',
+      location: '',
+      temperature: '',
+      condition: '',
+      weatherList: [{}]
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,12 +28,15 @@ export default class SearchBar extends Component {
     fetch(`/api/weather?address=${this.state.input}`)
       .then(res => res.json())
       .then(({ address, weather }) => {
+        // console.log(weather.daily.data);
         this.setState({
           location: address.formatted,
           temperature: weather.currently.temperature,
-          condition: weather.currently.summary
+          condition: weather.currently.summary,
+          weatherList: weather.daily.data
         });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -46,12 +51,12 @@ export default class SearchBar extends Component {
           />
           <input type="submit" value="submit" />
         </form>
-
         <MainWeather
           location={this.state.location}
-          temperature={this.state.temperature}
+          temperature={this.state.temperature.toString()}
           condition={this.state.condition}
         />
+        <DailyWeather dailyWeather={this.state.weatherList} />
       </Fragment>
     );
   }

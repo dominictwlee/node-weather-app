@@ -1,0 +1,9 @@
+.weatherPanel {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day {
+  flex: 1 0 5rem;
+}
