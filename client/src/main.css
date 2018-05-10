@@ -80,9 +80,11 @@ th {
 @value morningDark: #38aeda;
 @value morningMedium: #78c2d3;
 @value morningLight: #bed9cc;
+@value white: #dff4ea;
 
 html {
-  font-family: 'Nunito', sans-serif;
+  font-family: sans-serif;
+  color: white;
   font-size: 18px;
   line-height: 1.5;
   min-height: 100vh;

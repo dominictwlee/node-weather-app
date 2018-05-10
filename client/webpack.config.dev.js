@@ -7,7 +7,10 @@ module.exports = merge(common, {
   devtool: 'cheap-eval-source-map',
   devServer: {
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    proxy: {
+      '/api': 'http://[::1]:3000'
+    }
   },
   module: {
     rules: [

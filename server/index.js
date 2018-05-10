@@ -1,9 +1,11 @@
 const express = require('express');
-require('dotenv').config()
+const cors = require('cors');
+require('dotenv').config();
 
 const weatherRouter = require('./weather/weather.route.js');
 
 const app = express();
+app.use(cors());
 
 app.use('/api/weather', weatherRouter);
 
