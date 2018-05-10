@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './components/App';
+import App from './components/App/App';
 
-import './index.css';
+import './main.css';
 
 const renderApp = () => {
   render(<App />, document.getElementById('app'));
@@ -12,7 +12,7 @@ const renderApp = () => {
 renderApp();
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./components/App/App', () => {
     renderApp();
   });
 }

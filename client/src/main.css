@@ -73,9 +73,15 @@ th {
   text-align: left;
 }
 
+@value nightDark: #002b56;
+@value nightMedium: #094c69;
+@value nightLight: #096877;
+
+@value morningDark: #38aeda;
+@value morningMedium: #78c2d3;
+@value morningLight: #bed9cc;
+
 html {
-  background-color: white;
-  color: black;
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   line-height: 1.5;
