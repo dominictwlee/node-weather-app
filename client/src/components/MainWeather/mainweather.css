@@ -1,7 +1,19 @@
 .weatherPanel {
-  position: relative;
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .icon {
-  width: 10rem;
+  width: 15rem;
+}
+
+.weatherInfo {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.text {
+  font-size: 1rem;
 }
