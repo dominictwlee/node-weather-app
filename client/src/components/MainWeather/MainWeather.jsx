@@ -11,8 +11,8 @@ const MainWeather = props => (
       <p>{props.condition}</p>
       <p>{props.temperature}</p>
     </header>
-    <figure className={styles.icon}>
-      <img src={iconMatch[props.icon]} alt="alt icon" />
+    <figure>
+      <img className={styles.icon} src={iconMatch[props.icon]} alt="alt icon" />
     </figure>
     <section className={styles.text}>
       <p>{props.location}</p>

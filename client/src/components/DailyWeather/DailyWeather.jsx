@@ -11,13 +11,12 @@ const DailyWeather = ({ dailyWeather }) => (
     <h4 className={styles.header}>7 Day Weather Forecast</h4>
     {dailyWeather.filter((item, index) => index !== 0).map(weather => (
       <section key={shortid.generate()} className={styles.day}>
-        <p>{weather.summary}</p>
-        <p>
-          <span>{weather.temperatureMax}</span>
-          <span> | </span>
-          <span>{weather.temperatureMin}</span>
+        <div className={styles.itemContainer}>
+          <span className={styles.maxTemp}>{weather.temperatureMax}&#730;C</span>
+          <span className={styles.minTemp}>{weather.temperatureMin}&#730;C</span>
           <img src={iconMatch[weather.icon] || iconMatch.snow} alt="alt icon" />
-        </p>
+          <p className={styles.summary}>{weather.summary}</p>
+        </div>
       </section>
     ))}
   </div>
