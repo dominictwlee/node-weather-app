@@ -12,6 +12,7 @@ export default class Search extends Component {
       location: '',
       temperature: '',
       condition: '',
+      icon: '',
       weatherList: [{}]
     };
 
@@ -33,7 +34,8 @@ export default class Search extends Component {
           location: address.formatted,
           temperature: weather.currently.temperature,
           condition: weather.currently.summary,
-          weatherList: weather.daily.data
+          weatherList: weather.daily.data,
+          icon: weather.currently.icon
         });
       })
       .catch(err => console.error(err));
@@ -55,6 +57,7 @@ export default class Search extends Component {
           location={this.state.location}
           temperature={this.state.temperature.toString()}
           condition={this.state.condition}
+          icon={this.state.icon}
         />
         <DailyWeather dailyWeather={this.state.weatherList} />
       </Fragment>

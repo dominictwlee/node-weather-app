@@ -2,8 +2,10 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  background-color: rgba(246, 248, 255, 0.15);
 }
 
 .day {
-  flex: 1 0 5rem;
+  flex: 1 1 5rem;
+  margin: 1rem;
 }
