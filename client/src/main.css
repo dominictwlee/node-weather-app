@@ -77,8 +77,8 @@ th {
 @value nightMedium: #094c69;
 @value nightLight: #096877;
 
-@value morningDark: #38aeda;
-@value morningMedium: #78c2d3;
+@value skyBlue: #38aeda;
+@value seaBreeze: #78c2d3;
 @value morningLight: #bed9cc;
 @value white: #dff4ea;
 
@@ -107,4 +107,10 @@ html::after {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+input[type='text'],
+textarea {
+  background-color: rgba(24, 24, 24, 0.6);
+  color: white;
 }

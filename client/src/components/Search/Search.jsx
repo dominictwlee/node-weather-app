@@ -47,25 +47,25 @@ export default class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          className={styles.textInput}
-          type="text"
-          placeholder="Enter a city, place or address"
-          value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="submit" />
-        <Fragment>
-          <MainWeather
-            location={this.state.location || null}
-            temperature={this.state.temperature || null}
-            condition={this.state.condition || null}
-            icon={this.state.icon || 'thermometer'}
+      <Fragment>
+        <form onSubmit={this.handleSubmit} className={styles.searchBar}>
+          <input
+            className={styles.textInput}
+            type="text"
+            placeholder="Enter a location"
+            value={this.state.input}
+            onChange={this.handleChange}
           />
-          <DailyWeather dailyWeather={this.state.weatherList} />
-        </Fragment>
-      </form>
+          <input className={styles.button} type="submit" value="submit" />
+        </form>
+        <MainWeather
+          location={this.state.location || null}
+          temperature={this.state.temperature || null}
+          condition={this.state.condition || null}
+          icon={this.state.icon || 'thermometer'}
+        />
+        <DailyWeather dailyWeather={this.state.weatherList} />
+      </Fragment>
     );
   }
 }

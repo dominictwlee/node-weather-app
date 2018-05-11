@@ -1,6 +1,5 @@
 .weatherPanel {
   min-height: 20rem;
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
