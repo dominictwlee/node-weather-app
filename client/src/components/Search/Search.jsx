@@ -29,7 +29,6 @@ export default class Search extends Component {
     fetch(`/api/weather?address=${this.state.input}`)
       .then(res => res.json())
       .then(({ address, weather }) => {
-        // console.log(weather.daily.data);
         this.setState({
           location: address.formatted,
           temperature: weather.currently.temperature,
