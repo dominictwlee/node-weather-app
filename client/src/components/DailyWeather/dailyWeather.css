@@ -1,8 +1,13 @@
 .weatherPanel {
+  min-height: 20rem;
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgba(246, 248, 255, 0.15);
+  justify-content: center;
+}
+
+.header {
+  font-size: 1.5rem;
 }
 
 .day {

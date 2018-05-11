@@ -8,7 +8,7 @@ import styles from './dailyWeather.css';
 
 const DailyWeather = ({ dailyWeather }) => (
   <div className={styles.weatherPanel}>
-    <h4>7 Day Weather Forecast</h4>
+    <h4 className={styles.header}>7 Day Weather Forecast</h4>
     {dailyWeather.filter((item, index) => index !== 0).map(weather => (
       <section key={shortid.generate()} className={styles.day}>
         <p>{weather.summary}</p>

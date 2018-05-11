@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import styles from './search.css';
 import MainWeather from '../MainWeather/MainWeather';
 import DailyWeather from '../DailyWeather/DailyWeather';
+
+import styles from './search.css';
 
 export default class Search extends Component {
   constructor(props) {
@@ -12,8 +13,9 @@ export default class Search extends Component {
       location: '',
       temperature: '',
       condition: '',
+      weatherList: [{}],
       icon: '',
-      weatherList: [{}]
+      isFetched: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +27,7 @@ export default class Search extends Component {
   }
 
   handleSubmit(event) {
+    this.setState({ isFetched: false });
     event.preventDefault();
     fetch(`/api/weather?address=${this.state.input}`)
       .then(res => res.json())
@@ -34,7 +37,8 @@ export default class Search extends Component {
           temperature: weather.currently.temperature,
           condition: weather.currently.summary,
           weatherList: weather.daily.data,
-          icon: weather.currently.icon
+          icon: weather.currently.icon,
+          isFetched: true
         });
       })
       .catch(err => console.error(err));
@@ -42,24 +46,30 @@ export default class Search extends Component {
 
   render() {
     return (
-      <Fragment>
-        <form onSubmit={this.handleSubmit} className={styles.form}>
-          <input
-            type="text"
-            placeholder="Enter a city, place or address"
-            value={this.state.input}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="submit" />
-        </form>
-        <MainWeather
-          location={this.state.location}
-          temperature={this.state.temperature.toString()}
-          condition={this.state.condition}
-          icon={this.state.icon}
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className={styles.textInput}
+          type="text"
+          placeholder="Enter a city, place or address"
+          value={this.state.input}
+          onChange={this.handleChange}
         />
-        <DailyWeather dailyWeather={this.state.weatherList} />
-      </Fragment>
+        <input type="submit" value="submit" />
+
+        {!this.state.isFetched ? (
+          <h1>Pending</h1>
+        ) : (
+          <Fragment>
+            <MainWeather
+              location={this.state.location}
+              temperature={this.state.temperature.toString()}
+              condition={this.state.condition}
+              icon={this.state.icon}
+            />
+            <DailyWeather dailyWeather={this.state.weatherList} />
+          </Fragment>
+        )}
+      </form>
     );
   }
 }
