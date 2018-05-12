@@ -13,6 +13,6 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.use('/api/weather', weatherRouter);
 
-app.listen(3000, () => console.log(`Server started on 3000`));
+app.listen(process.env.PORT, () => console.log(`Server started on 3000`));
 
 module.exports = app;
