@@ -15,7 +15,8 @@ export default class Search extends Component {
       temperature: '',
       condition: '',
       weatherList: [{}],
-      icon: ''
+      icon: '',
+      timezone: ''
       // isFetched: false
     };
 
@@ -38,7 +39,8 @@ export default class Search extends Component {
           temperature: `${weather.currently.temperature}${String.fromCharCode('0176')}C`,
           condition: weather.currently.summary,
           weatherList: weather.daily.data,
-          icon: weather.currently.icon
+          icon: weather.currently.icon,
+          timezone: weather.timezone
           // isFetched: true
         });
       })
@@ -63,6 +65,7 @@ export default class Search extends Component {
           temperature={this.state.temperature || null}
           condition={this.state.condition || null}
           icon={this.state.icon || 'thermometer'}
+          timezone={this.state.timezone || 'Europe/London'}
         />
         <DailyWeather dailyWeather={this.state.weatherList} />
       </Fragment>
