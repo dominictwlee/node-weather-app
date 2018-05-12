@@ -12,6 +12,7 @@ import thunderstorm from '../assets/icons/wi-thunderstorm.svg';
 import tornado from '../assets/icons/wi-tornado.svg';
 import wind from '../assets/icons/wi-strong-wind.svg';
 import thermometer from '../assets/icons/thermometer.svg';
+import loading from '../assets/icons/loading.svg';
 
 export default {
   'clear-day': clearDay,
@@ -27,5 +28,6 @@ export default {
   thunderstorm,
   tornado,
   wind,
-  thermometer
+  thermometer,
+  loading
 };

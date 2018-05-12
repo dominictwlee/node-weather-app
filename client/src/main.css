@@ -83,7 +83,7 @@ th {
 @value white: #dff4ea;
 
 html {
-  font-family: sans-serif;
+  font-family: 'Inconsolata', sans-serif;
   color: white;
   font-size: 16px;
   line-height: 1.5;
@@ -107,6 +107,15 @@ html::after {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Karla', sans-serif;
 }
 
 input[type='text'],

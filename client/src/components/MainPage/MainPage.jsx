@@ -3,9 +3,9 @@ import React, { Component, Fragment } from 'react';
 import MainWeather from '../MainWeather/MainWeather';
 import DailyWeather from '../DailyWeather/DailyWeather';
 import SearchBar from '../SearchBar/SearchBar';
-// import Default from '../Default/Default';
+import Loading from '../Loading/Loading';
 
-// import styles from './search.css';
+import styles from './mainPage.css';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -17,9 +17,9 @@ export default class MainPage extends Component {
       condition: '',
       weatherList: [{}],
       icon: '',
-      timezone: ''
-
-      // isFetched: false
+      timezone: '',
+      loading: false,
+      notFound: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,8 +31,9 @@ export default class MainPage extends Component {
   }
 
   handleSubmit(event) {
-    // this.setState({ isFetched: false });
     event.preventDefault();
+    this.setState({ loading: true });
+    this.setState({ notFound: false });
     fetch(`/api/weather?address=${this.state.input}`)
       .then(res => res.json())
       .then(({ address, weather }) => {
@@ -42,25 +43,34 @@ export default class MainPage extends Component {
           condition: weather.currently.summary,
           weatherList: weather.daily.data,
           icon: weather.currently.icon,
-          timezone: weather.timezone
-          // isFetched: true
+          timezone: weather.timezone,
+          loading: false
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        this.setState({ loading: false, notFound: true });
+      });
   }
 
   render() {
     return (
       <Fragment>
         <SearchBar handleSubmit={this.handleSubmit} inputValue={this.state.input} handleChange={this.handleChange} />
-        <MainWeather
-          location={this.state.location || null}
-          temperature={this.state.temperature || null}
-          condition={this.state.condition || null}
-          icon={this.state.icon || 'thermometer'}
-          timezone={this.state.timezone || 'Etc/UTC'}
-        />
-        <DailyWeather dailyWeather={this.state.weatherList} timezone={this.state.timezone || 'Etc/UTC'} />
+        {this.state.notFound ? <h1 className={styles.invalidMsg}>Sorry, location not found</h1> : null}
+        {this.state.loading ? <Loading /> : null}
+        {!this.state.loading && this.state.notFound ? null : (
+          <Fragment>
+            <MainWeather
+              location={this.state.location || null}
+              temperature={this.state.temperature || null}
+              condition={this.state.condition || null}
+              icon={this.state.icon || 'thermometer'}
+              timezone={this.state.timezone || 'Etc/UTC'}
+            />
+            <DailyWeather dailyWeather={this.state.weatherList} timezone={this.state.timezone || 'Etc/UTC'} />
+          </Fragment>
+        )}
       </Fragment>
     );
   }
