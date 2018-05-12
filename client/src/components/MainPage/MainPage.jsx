@@ -59,7 +59,7 @@ export default class MainPage extends Component {
         <SearchBar handleSubmit={this.handleSubmit} inputValue={this.state.input} handleChange={this.handleChange} />
         {this.state.notFound ? <h1 className={styles.invalidMsg}>Sorry, location not found</h1> : null}
         {this.state.loading ? <Loading /> : null}
-        {!this.state.loading && this.state.notFound ? null : (
+        {this.state.loading || this.state.notFound ? null : (
           <Fragment>
             <MainWeather
               location={this.state.location || null}

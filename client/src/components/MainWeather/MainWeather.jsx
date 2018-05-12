@@ -36,8 +36,8 @@ class MainWeather extends Component {
     return (
       <main className={styles.weatherPanel}>
         <header className={styles.weatherInfo}>
-          <p>{this.props.condition}</p>
-          <p>{this.props.temperature}</p>
+          <h1>{this.props.condition}</h1>
+          <h2>{this.props.temperature}</h2>
         </header>
         <figure>
           <img className={styles.icon} src={iconMatch[this.props.icon]} alt="alt icon" />
