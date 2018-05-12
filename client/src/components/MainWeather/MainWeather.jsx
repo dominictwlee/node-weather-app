@@ -12,7 +12,7 @@ class MainWeather extends Component {
     this.state = {
       time: moment()
         .tz(this.props.timezone)
-        .format('zz MMMM Do YYYY, h:mm:ss a')
+        .format('ddd, MMMM Do YYYY, h:mm:ss a zz')
     };
   }
 
@@ -28,7 +28,7 @@ class MainWeather extends Component {
     this.setState({
       time: moment()
         .tz(this.props.timezone)
-        .format('zz MMMM Do YYYY, h:mm:ss a')
+        .format('ddd, MMMM Do YYYY, h:mm:ss a zz')
     });
   }
 

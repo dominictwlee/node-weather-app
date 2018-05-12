@@ -17,6 +17,7 @@ export default class Search extends Component {
       weatherList: [{}],
       icon: '',
       timezone: ''
+
       // isFetched: false
     };
 
@@ -58,16 +59,16 @@ export default class Search extends Component {
             value={this.state.input}
             onChange={this.handleChange}
           />
-          <input className={styles.button} type="submit" value="submit" />
+          <button className={styles.button}>Search</button>
         </form>
         <MainWeather
           location={this.state.location || null}
           temperature={this.state.temperature || null}
           condition={this.state.condition || null}
           icon={this.state.icon || 'thermometer'}
-          timezone={this.state.timezone || 'Europe/London'}
+          timezone={this.state.timezone || 'Etc/UTC'}
         />
-        <DailyWeather dailyWeather={this.state.weatherList} />
+        <DailyWeather dailyWeather={this.state.weatherList} timezone={this.state.timezone || 'Etc/UTC'} />
       </Fragment>
     );
   }
