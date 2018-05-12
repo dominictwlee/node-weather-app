@@ -7,9 +7,9 @@ import iconMatch from '../../helpers/iconLoader';
 
 import styles from './dailyWeather.css';
 
-const DailyWeather = ({ dailyWeather, timezone }) => (
+const DailyWeather = ({ dailyWeather, timezone, header }) => (
   <div className={styles.dailyForecast}>
-    <h4 className={styles.header}>Next 7 Days:</h4>
+    <h4 className={styles.header}>{header}</h4>
     {dailyWeather.filter((item, index) => index !== 0).map((weather, index) => (
       <section key={shortid.generate()} className={styles.day}>
         <div className={styles.itemContainer}>
@@ -34,7 +34,8 @@ const DailyWeather = ({ dailyWeather, timezone }) => (
 
 DailyWeather.propTypes = {
   dailyWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
-  timezone: PropTypes.string.isRequired
+  timezone: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired
 };
 
 export default DailyWeather;

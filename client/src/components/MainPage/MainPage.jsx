@@ -19,7 +19,8 @@ export default class MainPage extends Component {
       icon: '',
       timezone: '',
       loading: false,
-      notFound: false
+      notFound: false,
+      header: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,7 @@ export default class MainPage extends Component {
       .then(res => res.json())
       .then(({ address, weather }) => {
         this.setState({
+          header: 'Next 7 days:',
           location: address.formatted,
           temperature: `${weather.currently.temperature}${String.fromCharCode('0176')}C`,
           condition: weather.currently.summary,
@@ -68,7 +70,13 @@ export default class MainPage extends Component {
               icon={this.state.icon || 'thermometer'}
               timezone={this.state.timezone || 'Etc/UTC'}
             />
-            <DailyWeather dailyWeather={this.state.weatherList} timezone={this.state.timezone || 'Etc/UTC'} />
+            {
+              <DailyWeather
+                header={this.state.header}
+                dailyWeather={this.state.weatherList}
+                timezone={this.state.timezone || 'Etc/UTC'}
+              />
+            }
           </Fragment>
         )}
       </Fragment>
