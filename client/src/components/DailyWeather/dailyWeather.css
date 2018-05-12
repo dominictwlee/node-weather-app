@@ -1,3 +1,7 @@
+@value breakpoints: '../../main.css';
+
+@value medium, large from breakpoints;
+
 .dailyForecast {
   min-height: 20rem;
   display: flex;
@@ -12,13 +16,19 @@
 }
 
 .day {
-  flex: 1 1 5rem;
+  flex: 1 1 6rem;
   margin: 2rem;
   max-width: 6rem;
+
+  @media (min-width: medium) {
+    max-width: 7rem;
+    flex: 1 1 7rem;
+    margin: 2.5rem;
+  }
 }
 
 .maxTemp {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .minTemp {
@@ -28,6 +38,10 @@
 .summary {
   overflow-y: scroll;
   max-height: 6rem;
+
+  @media (min-width: large) {
+    overflow-y: visible;
+  }
 }
 
 .itemContainer {

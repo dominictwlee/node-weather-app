@@ -82,6 +82,9 @@ th {
 @value morningLight: #bed9cc;
 @value white: #dff4ea;
 
+@value medium: 768px;
+@value large: 1024px;
+
 html {
   font-family: 'Inconsolata', sans-serif;
   color: white;
@@ -92,6 +95,14 @@ html {
   overflow-x: hidden;
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   background: linear-gradient(nightDark, nightMedium, nightLight);
+
+  @media (min-width: medium) {
+    font-size: 18px;
+  }
+
+  @media (min-width: large) {
+    font-size: 20px;
+  }
 }
 
 html::after {
