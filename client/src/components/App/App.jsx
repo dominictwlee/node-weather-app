@@ -1,11 +1,11 @@
 import React from 'react';
 
 import styles from './app.css';
-import Search from '../Search/Search';
+import MainPage from '../MainPage/MainPage';
 
 const App = () => (
   <div className={styles.pageContainer}>
-    <Search />
+    <MainPage />
   </div>
 );
 

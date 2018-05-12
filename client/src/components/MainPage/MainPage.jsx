@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react';
 
 import MainWeather from '../MainWeather/MainWeather';
 import DailyWeather from '../DailyWeather/DailyWeather';
+import SearchBar from '../SearchBar/SearchBar';
 // import Default from '../Default/Default';
 
-import styles from './search.css';
+// import styles from './search.css';
 
-export default class Search extends Component {
+export default class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,16 +52,7 @@ export default class Search extends Component {
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.handleSubmit} className={styles.searchBar}>
-          <input
-            className={styles.textInput}
-            type="text"
-            placeholder="Enter a location"
-            value={this.state.input}
-            onChange={this.handleChange}
-          />
-          <button className={styles.button}>Search</button>
-        </form>
+        <SearchBar handleSubmit={this.handleSubmit} inputValue={this.state.input} handleChange={this.handleChange} />
         <MainWeather
           location={this.state.location || null}
           temperature={this.state.temperature || null}
